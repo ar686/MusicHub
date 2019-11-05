@@ -16,8 +16,6 @@ if($response == 0){ // Start session & redirect on login.
    session_start();
    $_SESSION['username'] = $username;
    header ("Location: login.html"); // Redirect.
-}else{
-   exit();
 }
 ?>
 <!DOCTYPE html>
