@@ -18,8 +18,6 @@ if($response == 0){ // Start session & redirect on login.
    $random = bin2hex(random_bytes(32));
    $_SESSION['random'] = $random;
    header ("Location: authenticated.php?token=" . $random);
-}else{
-   exit();
 }
 ?>
 <!DOCTYPE html>
