@@ -1,4 +1,5 @@
-?php
+
+<?php
 require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
@@ -23,3 +24,36 @@ curl_setopt_array($curl, array(
                 "x-rapidapi-key: 335c244f74msh59e1c3fea4460a2p1b1008jsna8fab81eacf0"
         ),
 ));
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+        echo "cURL Error #:" . $err;
+} else {
+        echo $response;
+}
+
+function requestProcessor($request)
+{
+  echo "received request".PHP_EOL;
+  var_dump($request);
+  if(!isset($request['type']))
+  {
+    return "ERROR: unsupported message type";
+  }
+  switch ($request['type'])
+  
+{
+        case "uid":
+        return search($request['uid']);
+
+}
+  return array("returnCode" => '0', 'message'=>"Server received request and processed");
+}
+$server = new rabbitMQServer("registration.ini","apiServer");
+$server->process_requests('requestProcessor');
+exit();
+?>
