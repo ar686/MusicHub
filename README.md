@@ -32,7 +32,7 @@ sudo rabbitmq-plugins enable rabbitmq_management
 
 ## Authors
 
-See the list of [contributors](https://github.com/adr50/SimpleMQ/contributors) who participated in this project.
+See the list of [contributors](https://github.com/adr50/MusicHub/contributors) who participated in this project.
 
 ## License
 
