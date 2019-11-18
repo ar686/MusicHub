@@ -47,8 +47,8 @@ function requestProcessor($request)
   switch ($request['type'])
   
 {
-        case "uid":
-        return search($request['uid']);
+        case "name":
+        return search($request['name']);
 
 }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
