@@ -33,7 +33,7 @@ curl_close($curl);
 if ($err) {
         echo "cURL Error #:" . $err;
 } else {
-        echo json_encode($response, JSON_PRETTY_PRINT);
+        $r =  json_encode($response);
 }
 
 function requestProcessor($request)
