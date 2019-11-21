@@ -14,4 +14,9 @@ $response = $client->send_request($request); // Store the response of send reque
 $array = json_decode($response, true);
 echo $array;
 
+foreach($array as $key=>$value) {
+     echo $key . "=>" . $value . "<br>";
+
+}
+
 ?>
