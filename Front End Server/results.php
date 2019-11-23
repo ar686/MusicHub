@@ -36,6 +36,7 @@ for($i = 0; $i < $assoc['total']; $i++){
       $pass[$i] = array('artist_id'=> $artist_id_data, 'name'=> $artist_name_data, 
       'album_id' => $album_id_data, 'album_title' => $album_title_data, 'track_id' => $track_id_data, 
       'track_title' => $track_title_data, 'track_duration' => $track_duration_data);
+    }
 }
-//echo '<pre>'; print_r($pass); echo '</pre>';
+echo '<pre>'; print_r($pass); echo '</pre>';
 ?>
