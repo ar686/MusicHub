@@ -14,28 +14,28 @@ $response = $client->send_request($request); // Store the response of send reque
 $assoc = json_decode($response, true);
 $assoc = string($assoc);
 
-$wantedArtistKeys = array('id', 'name');
-$wantedAlbumKeys = array('id', 'title');
-$wantedTrackKeys = array('id', 'title', 'duration');
+$artist_keys = array('id', 'name');
+$album_keys = array('id', 'title');
+$track_keys = array('id', 'title', 'duration');
 
-for($i=0;$i<$assoc['total'];$i++){
+$pass = array();
 
-  echo "<br>";
+for($i = 0; $i < $assoc['total']; $i++){
 
-  foreach ($wantedArtistKeys as $value) { 
-    echo $assoc['data'][$i]['artist'][$value] . PHP_EOL;
-    echo "<br>";
-  }
+    $artist_id_data = $assoc['data'][$i]['artist'][$artist_keys[0]];
+    $artist_name_data = $assoc['data'][$i]['artist'][$artist_keys[1]];
 
-  foreach ($wantedAlbumKeys as $value) {
-    echo $assoc['data'][$i]['album'][$value] . PHP_EOL;
-    echo "<br>";
-  }
+    $album_id_data = $assoc['data'][$i]['album'][$album_keys[0]];
+    $album_title_data = $assoc['data'][$i]['album'][$album_keys[1]];
 
-  foreach ($wantedTrackKeys as $value) {
-    echo $assoc['data'][$i][$value] . PHP_EOL;
-    echo "<br>";
-  }
+    $track_id_data = $assoc['data'][$i][$track_keys[0]];
+    $track_title_data = $assoc['data'][$i][$track_keys[1]];
+    $track_duration_data = $assoc['data'][$i][$track_keys[2]];
+
+    if ($artist_id_data != "" || $artist_name_data != ""){
+      $pass[$i] = array('artist_id'=> $artist_id_data, 'name'=> $artist_name_data, 
+      'album_id' => $album_id_data, 'album_title' => $album_title_data, 'track_id' => $track_id_data, 
+      'track_title' => $track_title_data, 'track_duration' => $track_duration_data);
 }
-
+//echo '<pre>'; print_r($pass); echo '</pre>';
 ?>
