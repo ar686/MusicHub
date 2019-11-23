@@ -11,7 +11,31 @@ $search = $request['search'];
 	
 $response = $client->send_request($request); // Store the response of send request.
 
-$array = json_decode($response, true);
-echo $array;
+$assoc = json_decode($response, true);
+$assoc = string($assoc);
+
+$wantedArtistKeys = array('id', 'name');
+$wantedAlbumKeys = array('id', 'title');
+$wantedTrackKeys = array('id', 'title', 'duration');
+
+for($i=0;$i<$assoc['total'];$i++){
+
+  echo "<br>";
+
+  foreach ($wantedArtistKeys as $value) { 
+    echo $assoc['data'][$i]['artist'][$value] . PHP_EOL;
+    echo "<br>";
+  }
+
+  foreach ($wantedAlbumKeys as $value) {
+    echo $assoc['data'][$i]['album'][$value] . PHP_EOL;
+    echo "<br>";
+  }
+
+  foreach ($wantedTrackKeys as $value) {
+    echo $assoc['data'][$i][$value] . PHP_EOL;
+    echo "<br>";
+  }
+}
 
 ?>
