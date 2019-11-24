@@ -4,15 +4,15 @@ require_once 'rabbitMQLib.inc';
 require_once 'get_host_info.inc';
 
 $client = new rabbitMQClient("api.ini","testServer");
+$database = new rabbitMQClient("api_db.ini", "testServer");
 
-$request = array(); // From POST, input username/password into the $request array.
+$request = array();
 $request['search'] = $_GET['search'];
 $search = $request['search'];
 	
-$response = $client->send_request($request); // Store the response of send request.
+$response = $client->send_request($request);
 
 $assoc = json_decode($response, true);
-$assoc = string($assoc);
 
 $artist_keys = array('id', 'name');
 $album_keys = array('id', 'title');
@@ -39,4 +39,6 @@ for($i = 0; $i < $assoc['total']; $i++){
     }
 }
 echo '<pre>'; print_r($pass); echo '</pre>';
+
+$db_response = $database->send_request($pass);
 ?>
