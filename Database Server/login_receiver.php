@@ -12,22 +12,22 @@ require_once 'get_host_info.inc';
 function requestProcessor($request){
     echo "Received request:" . PHP_EOL;
     var_dump($request);
-    $login = doLogin($request[0], $request[1]);
+    $login = doLogin($request['username'], $request['password']);
     if($login == 1){
-        return 0; // Server received request and processed it.
+        return 0;
     }else{
         return 1;
     }
 }
 
 function doLogin($username, $password){
-    $database = new mysqli("localhost", "root", "password", "website"); // Change parameters to database settings.
-    // Connectivity check.
+    $database = new mysqli("localhost", "root", "password", "website");
+    
     if(mysqli_connect_errno()){
         echo("Failed to connect to MySQL database: " . mysqli_connect_error() . "\n");
         exit();
     }
-    // Set variables to values extracted from database.
+    
     $username = $database->real_escape_string($username);
     $password = $database->real_escape_string($password);
 
@@ -37,7 +37,6 @@ function doLogin($username, $password){
     }
     $password_check = $login->num_rows;
 
-    // Check if the given password is correct.
     if($password_check == 0){
         echo("FAILURE: Incorrect password, or user does not exist. Please try again." . "\n");
         return 0;
