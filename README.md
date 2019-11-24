@@ -8,11 +8,11 @@ These directions are written assuming the user is running Ubuntu Server 18.04.
 
 Get these dependencies/requirements: (Front End/Database/RabbitMQ)
 ```
-sudo apt-get install php apache2 php-bcmath php-mbstring composer php-curl
+sudo apt-get install php apache2 php-bcmath php-mbstring composer php-curl php-gettext
 
-sudo apt-get install php mysql-server php-bcmath php-mbstring composer php-curl
+sudo apt-get install php mysql-server php-bcmath php-mbstring composer php-curl php-gettext
 
-sudo apt-get install php rabbitmq-server php-bcmath php-mbstring composer php-curl
+sudo apt-get install php rabbitmq-server php-bcmath php-mbstring composer php-curl php-gettext
 
 composer require php-amqplib/php-amqplib
 ```
