@@ -4,15 +4,14 @@ require_once 'rabbitMQLib.inc';
 require_once 'get_host_info.inc';
 
 $client = new rabbitMQClient("login.ini","testServer");
-$request_user['username'] = $_POST['username'];
-$request_pass['password'] = $_POST['password'];
-$username = $request_user['username'];
-$password = $request_pass['password'];
-$request = array($username, $password);
+$request = array();
+$request['username'] = $_POST['username'];
+$request['password'] = $_POST['password'];
+$username = $request['username'];
 	
-$response = $client->send_request($request); // Store the response of send request.
+$response = $client->send_request($request);
 
-if($response == 0){ // Start session & redirect on login.
+if($response == 0){
    session_start();
    $_SESSION['username'] = $username;
    $random = bin2hex(random_bytes(32));
