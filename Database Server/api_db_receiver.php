@@ -33,12 +33,13 @@ function doCheck($db_request){
       $track_title = $db_request[$i]['track_title'];
       $track_duration = $db_request[$i]['track_duration'];
     
-      $result = $database->query("SELECT * FROM music WHERE track_id = '$track_id'");
+      $result = $database->query("SELECT artist_id FROM music WHERE track_id = '$track_id'");
+      
       
       if ($result->num_rows >= 1) {
-        echo $track_id . "NOTE: Record already exists, database not updated." . PHP_EOL;
+        //echo "TRACK: [A: " . $name . " --> T: " . $track_title . "] NOTE: Record already exists, database not updated." . PHP_EOL;
       } else {
-        echo $track_id . "NOTE: Record has been added to the table." . PHP_EOL;
+        echo "TRACK: [A: " . $name . " --> T: " . $track_title . "] NOTE: Record has been added to the table." . PHP_EOL;
         $database->query("INSERT INTO music (artist_id, name, album_id, album_title, track_id, track_title,
         track_duration) VALUES ('$artist_id', '$name', '$album_id', '$album_title', '$track_id', '$track_title', '$track_duration')");
       }
