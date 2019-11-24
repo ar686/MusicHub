@@ -6,9 +6,15 @@ A music discovery website/catalog built as a project for systems integration at 
 
 These directions are written assuming the user is running Ubuntu Server 18.04.
 
-Get these dependencies/requirements:
+Get these dependencies/requirements: (Front End/Database/RabbitMQ)
 ```
-sudo apt-get install php apache2 rabbitmq-server php-bcmath php-mbstring composer
+sudo apt-get install php apache2 php-bcmath php-mbstring composer php-curl
+
+sudo apt-get install php mysql-server php-bcmath php-mbstring composer php-curl
+
+sudo apt-get install php rabbitmq-server php-bcmath php-mbstring composer php-curl
+
+composer require php-amqplib/php-amqplib
 ```
 
 Enable rabbitmq_management_plugin and open RabbitMQ management interface in a web browser:
