@@ -9,11 +9,6 @@ function requestProcessor($request){
     $results = doSearch($request['search']);
     return $results;
     }
-    //if($results == 1){
-        //return 0; // Server received request and processed it.
-    //}else{
-        //return 1;
-    //}
 
 function doSearch($search_string){
   ini_set("allow_url_fopen", 1);
@@ -34,7 +29,6 @@ curl_setopt_array($curl, array(
                 "x-rapidapi-key: 335c244f74msh59e1c3fea4460a2p1b1008jsna8fab81eacf0"
         ),
 ));
-
 $response = curl_exec($curl);
 $err = curl_error($curl);
 
@@ -44,12 +38,9 @@ if ($err) {
         echo "cURL Error #:" . $err;
         return 0;
 } else {
-        $r = json_encode($response);
-        //echo $r;
-        return $r;
+        return $response;
+  }
 }
-}
-
 $server = new rabbitMQServer("api.ini","testServer");
 $server->process_requests('requestProcessor');
 exit();
