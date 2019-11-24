@@ -33,13 +33,13 @@ function doCheck($db_request){
       $track_title = $db_request[$i]['track_title'];
       $track_duration = $db_request[$i]['track_duration'];
     
-      $artist_id = $database->real_escape_string($artist_id);
-      $name = $database->real_escape_string($name);
-      $album_id = $database->real_escape_string($album_id);
-      $album_title = $database->real_escape_string($album_title);
-      $track_id = $database->real_escape_string($track_id);
-      $track_title = $database->real_escape_string($track_title);
-      $track_duration = $database->real_escape_string($name);
+      //$artist_id = $database->real_escape_string($artist_id);
+      //$name = $database->real_escape_string($name);
+      //$album_id = $database->real_escape_string($album_id);
+      //$album_title = $database->real_escape_string($album_title);
+      //$track_id = $database->real_escape_string($track_id);
+      //$track_title = $database->real_escape_string($track_title);
+      //$track_duration = $database->real_escape_string($name);
       
       $database->query("INSERT INTO music (artist_id, name, album_id, album_title, track_id, track_title,
       track_duration) VALUES ('$artist_id', '$name', '$album_id', '$album_title', '$track_id', '$track_title',
