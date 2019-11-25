@@ -15,7 +15,7 @@ function SearchGenre($search_string){
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-	CURLOPT_URL => "https://deezerdevs-deezer.p.rapidapi.com/genre/%23country",
+	CURLOPT_URL => "https://deezerdevs-deezer.p.rapidapi.com/genre?q=$search_string",
 	CURLOPT_RETURNTRANSFER => true,
 	CURLOPT_FOLLOWLOCATION => true,
 	CURLOPT_ENCODING => "",
